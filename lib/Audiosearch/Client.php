@@ -49,6 +49,11 @@ class Audiosearch_Client {
         $resp_json = json_decode($resp->body);
         $this->access_token = $resp_json->access_token;
 
+        // create persistent agent for convenience
+        $this->agent = new Requests_Session($this->host);
+        $this->agent->useragent = $this->user_agent . '/' . $this->version;
+        $this->agent->headers['Authorization'] = "Bearer " . $this->access_token;
+
     }
 
 
@@ -64,7 +69,7 @@ class Audiosearch_Client {
         if ($params) {
             $uri .= '?' . http_build_query($params);
         }
-        $resp = Requests::get($uri, array('Authorization' => "Bearer " . $this->access_token));
+        $resp = $this->agent->get($uri);
         return json_decode($resp->body);
     }
 
