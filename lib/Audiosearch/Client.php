@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * PHP Client for Audiosear.ch API
+ * Copyright 2015 Pop Up Archive
+ * Licensed under the Apache 2 terms -- see LICENSE
+ */
+
 class Audiosearch_Client {
 
     private $access_token;
