@@ -40,6 +40,13 @@ foreach($res->results as $episode) {
 
 ## Development
 
+This package uses composer. To install dependencies you'll need the composer tool
+from https://getcomposer.org/. Then:
+
+```bash
+make install
+```
+
 To run the tests, create a **.env** file in the checkout
 with the following environment variables set to meaningful values:
 
