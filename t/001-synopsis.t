@@ -3,13 +3,17 @@
 require_once 'Common.php';
 require_once 'lib/Audiosearch/Client.php';
 
-plan(30);
+plan(32);
 
 ok( $client = new Audiosearch_Client(), "new Client" );
 
 ok( $show = $client->get('/shows/74'), "get /shows/74" );
 ok( $show_i = $client->get_show(74), "get_show 74" );
 is( $show->title, $show_i->title, "show titles match" );
+
+# absolute url test
+ok( $show_abs = $client->get($show->urls->self), "get absolute url" );
+is( $show_abs->id, $show->id, "absolute url ids match" );
 
 ok( $episode = $client->get('/episodes/3431'), "get /episodes/3431" );
 ok( $episode_i = $client->get_episode(3431), "get_episode 3431" );

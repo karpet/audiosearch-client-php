@@ -10,7 +10,7 @@ class Audiosearch_Client {
 
     private $access_token;
     private $host;
-    private $version = '1.0.0';
+    private $version = '1.0.1';
     private $user_agent = 'audiosearch-client-php';
 
     /**
@@ -65,7 +65,10 @@ class Audiosearch_Client {
      * @return object
      */
     public function get($path, $params=false) {
-        $uri = sprintf("%s/api/%s", $this->host, $path);
+        $uri = $path;
+        if (!preg_match('/^https?:/', $uri)) {
+            $uri = sprintf("%s/api/%s", $this->host, $path);
+        }
         if ($params) {
             $uri .= '?' . http_build_query($params);
         }
