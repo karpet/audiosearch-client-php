@@ -110,5 +110,34 @@ class Audiosearch_Client {
         return $this->get("/search/$type", $params);
     }
 
+    /**
+     *
+     *
+     * @return unknown
+     */
+    public function get_trending() {
+        return $this->get("/trending");
+    }
+
+    /**
+     *
+     *
+     * @return unknown
+     */
+    public function get_tastemakers($params=array()) {
+        $type = (array_key_exists('type', $params) ? $params['type'] : 'episodes');
+        $n = (array_key_exists('n', $params) ? $params['n'] : '10');
+        return $this->get("/tastemakers/$type/$n");
+    }
+
+    /**
+     *
+     *
+     * @param integer $p_id
+     * @return unknown
+     */
+    public function get_person($p_id) {
+        return $this->get("/people/$p_id");
+    }
 
 }
