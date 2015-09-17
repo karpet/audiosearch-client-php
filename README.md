@@ -36,6 +36,15 @@ foreach($res->results as $episode) {
   printf("[%s] %s (%s)\n", $episode->id, $episode->title, $episode->show_title);
 }
 
+# tastemakers
+$recs = $client->get_tastemakers(array('n' => '5')); # 'type' => 'episodes' is the default, may also specify 'type' => 'shows'
+
+# trending
+$trends = client->get_trending();
+
+# person
+person = client->get_person(1578)
+
 ```
 
 ## Development
