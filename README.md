@@ -30,6 +30,9 @@ $episode = $client->get('/episodes/5678');
 # or idiomatically
 $episode = $client->get_episode(5678);
 
+# get related content for an episode or show
+$related = $client->get_related(15, array('type' => 'shows', 'size' => 5, 'from' => 5)); # id is required, type: 'episodes' is default
+
 # search
 $res = $client->search(array('q' => 'test'));
 foreach($res->results as $episode) {
