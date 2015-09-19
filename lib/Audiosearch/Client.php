@@ -140,4 +140,16 @@ class Audiosearch_Client {
         return $this->get("/people/$p_id");
     }
 
+    /**
+     *
+     *
+     * @param integer $id
+     * @param array   $params
+     * @return unknown
+     */
+    public function get_related($id, $params=array()) {
+        $type = (array_key_exists('type', $params) ? $params['type'] : 'episodes');
+        return $this->get("/$type/$id/related", $params);
+    }
+
 }
