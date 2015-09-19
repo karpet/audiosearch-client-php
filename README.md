@@ -13,12 +13,12 @@ Example:
 require_once 'path/to/Audiosearch/Client.php';
 
 # create a client
-$client = new Audiosearch_Client(
+$client = new Audiosearch_Client(array(
   'key'     => 'oauth_id',
   'secret'  => 'oauth_secret',
-  'host'    => 'https://www.audiosear.ch/',
+  'host'    => 'https://www.audiosear.ch',
   'debug'   => false,
-)
+));
 
 # fetch a show with id 1234
 $show = $client->get('/shows/1234');
